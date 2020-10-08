@@ -11,5 +11,5 @@ import lombok.Setter;
 public class User {
     private String userName;
     private String lastName;
-    Role role;
+    private Role role;
 }
