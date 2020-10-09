@@ -7,6 +7,10 @@ import com.cybertek.core.SelectionStatements;
 import com.cybertek.core.StringMethods;
 import com.cybertek.enums.Gender;
 import com.cybertek.enums.Status;
+import com.cybertek.lambda.Addable;
+import com.cybertek.lambda.Drawable;
+import com.cybertek.lambda.Drawable2;
+import com.cybertek.lambda.Drawable3;
 import com.cybertek.oop.abstraction.implementation.UserServiceImplement;
 import com.cybertek.oop.abstraction.service.UserService;
 import com.cybertek.oop.encapsulation.Role;
@@ -71,6 +75,32 @@ public class Main {
         ArrayLists.createList();
         ArrayLists.createUserList();
         ArrayLists.createRoleList().get(0).getDescription();
+
+        //**********Lambda**********//
+
+        //No Parameter,No Return Type
+        Drawable drawable = () -> System.out.println("Drawing");
+        drawable.draw();
+        //Single Parameter,No Return Type
+        Drawable2 drawable2 = shape -> System.out.println("Drawing " + shape);
+        drawable2.draw("Circle");
+        //Multiple Parameters,No Return Type
+        Drawable3 drawable3 = (shape, name) -> System.out.println(name + " is drawing a " + shape);
+        drawable3.draw("Square","Ozzy");
+        //Parameter,Return Type
+        Addable addable = (number1,number2) -> number1+number2;
+        int result = addable.add(3,5);
+        System.out.println(result);
+
+        Addable addable2 = (number1, number2) -> {
+            int result2 = number1+number2;
+            int newResult = 5 * result2;
+            return newResult;
+        };
+        System.out.println(addable2.add(3,5));
+
+
+
 
     }
 }
