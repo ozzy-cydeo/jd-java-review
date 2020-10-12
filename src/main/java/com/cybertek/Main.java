@@ -7,10 +7,10 @@ import com.cybertek.core.SelectionStatements;
 import com.cybertek.core.StringMethods;
 import com.cybertek.enums.Gender;
 import com.cybertek.enums.Status;
-import com.cybertek.lambda.Addable;
-import com.cybertek.lambda.Drawable;
-import com.cybertek.lambda.Drawable2;
-import com.cybertek.lambda.Drawable3;
+import com.cybertek.lambda.shape.Addable;
+import com.cybertek.lambda.shape.Drawable;
+import com.cybertek.lambda.shape.Drawable2;
+import com.cybertek.lambda.shape.Drawable3;
 import com.cybertek.oop.abstraction.implementation.UserServiceImplement;
 import com.cybertek.oop.abstraction.service.UserService;
 import com.cybertek.oop.encapsulation.Role;
@@ -23,7 +23,6 @@ import com.cybertek.streams.exercises.StreamDemo;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class Main {
 
