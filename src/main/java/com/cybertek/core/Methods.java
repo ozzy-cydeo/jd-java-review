@@ -11,8 +11,8 @@ public class Methods {
     public String methodB(){
         return "methodB() is called!";
     }
-    public void methodB (String str){
-        System.out.println("methodB(String str) is called!");
+    public String methodB (String str){
+        return "methodB(String str) is called!";
     }
 
     public static void methodC(){

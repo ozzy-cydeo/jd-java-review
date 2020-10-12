@@ -8,4 +8,8 @@ public class Employee extends BaseEntity {
     int employeeId;
     String employeeTask;
     User employeeManager;
+
+    public void getEmployeeHours(){
+        System.out.println("40 hours a week");
+    }
 }

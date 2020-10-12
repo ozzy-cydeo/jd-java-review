@@ -1,5 +1,6 @@
 package com.cybertek.collections;
 
+import com.cybertek.enums.Gender;
 import com.cybertek.oop.encapsulation.Role;
 import com.cybertek.oop.encapsulation.User;
 
@@ -21,8 +22,8 @@ public class ArrayLists {
 
     public static void createUserList(){
         List<User> userList = new ArrayList<>();
-        userList.add(new User("Mike","Smith",new Role(1,"Manager")));
-        userList.add(new User("Temmy","Dallis",new Role(2,"Employee")));
+        userList.add(new User("Mike","Smith",new Role(1,"Manager"), Gender.MALE));
+        userList.add(new User("Temmy","Dallis",new Role(2,"Employee"),Gender.FEMALE));
         for(User l : userList){
             System.out.println(l.getRole().getDescription());
         }

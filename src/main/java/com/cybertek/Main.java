@@ -18,11 +18,12 @@ import com.cybertek.oop.encapsulation.User;
 import com.cybertek.oop.inheritance.BaseEntity;
 import com.cybertek.oop.inheritance.Project;
 import com.cybertek.oop.polymorphism.Employee;
+import com.cybertek.streams.exercises.StreamDemo;
 
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Main {
 
@@ -45,12 +46,9 @@ public class Main {
 
         StringMethods.demoStringMethod();
 
-        //**********ENUM**********//
-        System.out.println(Gender.MALE);
-        System.out.println(Status.IN_PROGRESS.getValue().substring(2));
 
         //**********OOP-Encapsulation**********//
-        User user = new User("Mike","Smith",new Role(1,"Manager"));
+        User user = new User("Mike","Smith",new Role(1,"Manager"),Gender.MALE);
         System.out.println(user.getFirstName());
         System.out.println(user.getLastName());
         System.out.println(user.getRole().getDescription());
@@ -58,18 +56,25 @@ public class Main {
         //**********OOP-Inheritance**********//
         Project project = new Project(1, LocalDateTime.now(),1,
                                         LocalDateTime.now().plusHours(1),1,"PRJ001","Human Resource CRM",
-                                        new User("Mike","Smith",new Role(1,"Manager")),
+                                        new User("Mike","Smith",new Role(1,"Manager"),Gender.MALE),
                                         LocalDate.now(), LocalDate.now().plusDays(6), Status.IN_PROGRESS,"HCRM Detail Information");
 
 
         //**********OOP-Interface**********//
         UserService userService = new UserService();
-        System.out.println(userService.userByUserName("Ozzy").getFirstName());
+        System.out.println(userService.userByFirstName("Ozzy").getLastName());
 
         //**********OOP-Polymorphism**********//
         Employee employee = new Employee();
         BaseEntity employee2 = new Employee();
-        UserService userService2 = new UserService();
+        UserServiceImplement userService2 = new UserService();
+
+        employee.getEmployeeHours();
+        ((Employee)employee2).getEmployeeHours(); //Down Casting
+
+        //**********ENUM**********//
+        System.out.println(Gender.MALE);
+        System.out.println(Status.IN_PROGRESS.getValue().substring(2));
 
         //**********Collections**********//
         ArrayLists.createList();
@@ -98,6 +103,15 @@ public class Main {
             return newResult;
         };
         System.out.println(addable2.add(3,5));
+
+
+
+        for(Project p : StreamDemo.getListOfProject(Status.UAT_TEST) ){
+            System.out.println(p.getAssignedManager().getFirstName());
+        }
+
+
+
 
 
 

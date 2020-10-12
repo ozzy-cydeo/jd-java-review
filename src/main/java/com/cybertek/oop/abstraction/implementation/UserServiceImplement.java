@@ -5,5 +5,5 @@ import com.cybertek.oop.encapsulation.User;
 public interface UserServiceImplement {
 
     String userByRoleId(Long id);
-    User userByUserName(String userName);
+    User userByFirstName(String firstName);
 }
