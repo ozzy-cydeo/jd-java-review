@@ -8,7 +8,7 @@ import com.cybertek.oop.encapsulation.User;
 public class UserService implements UserServiceImplement {
 
     @Override
-    public String userByRoleId(Long id) {
+    public String userByRoleId(int id) {
         User user = new User("Mike","Smith",new Role(id,"Manager"), Gender.MALE);
         return user.getFirstName() + " " + user.getLastName();
     }

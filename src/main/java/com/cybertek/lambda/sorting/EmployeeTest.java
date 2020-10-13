@@ -1,16 +1,22 @@
 package com.cybertek.lambda.sorting;
 
+import com.cybertek.enums.Gender;
+import com.cybertek.oop.encapsulation.Role;
+import com.cybertek.oop.encapsulation.User;
+
+
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeTest {
     public static void main(String[] args) {
 
-        Employee e1 = new Employee(101,"Mike","Smith","VA");
-        Employee e2 = new Employee(102,"Tom","Smith","DC");
-        Employee e3 = new Employee(103,"Evan","Smith","IL");
-        Employee e4 = new Employee(104,"Ammy","Smith","NY");
-        Employee e5 = new Employee(105,"Adam","Smith","NJ");
+        Employee e1 = new Employee(101,"Mike","Smith","VA",new Role(15,"Developer"));
+        Employee e2 = new Employee(11,"Mike","Smith","VA",new Role(5,"SDET"));
+        Employee e3 = new Employee(67,"Mike","Smith","VA",new Role(50,"DBA"));
+        Employee e4 = new Employee(33,"Mike","Smith","VA",new Role(7,"SCRUM MASTER"));
+        Employee e5 = new Employee(8,"Mike","Smith","VA",new Role(12,"ARCHITECT"));
 
         List<Employee> employeeList = new ArrayList<>();
         employeeList.add(e1);
@@ -22,7 +28,9 @@ public class EmployeeTest {
         employeeList.sort((emp1,emp2) -> emp1.employeeId.compareTo(emp2.employeeId));
         System.out.println(employeeList);
 
-        employeeList.sort((emp2,emp1) -> emp1.employeeId.compareTo(emp2.employeeId));
+        employeeList.sort((emp2,emp1) -> emp1.getRole().getId().compareTo(emp2.getRole().getId()));
         System.out.println(employeeList);
+
+
     }
 }

@@ -1,5 +1,5 @@
 package com.cybertek.lambda.sorting;
-
+import com.cybertek.oop.encapsulation.Role;
 import lombok.*;
 
 @NoArgsConstructor
@@ -12,4 +12,5 @@ public class Employee {
     String employeeFirstName;
     String employeeLastName;
     String employeeCity;
+    Role role;
 }

@@ -15,6 +15,7 @@ public class ShapeTest {
         Drawable4 drawable4 = (shape,area) -> "Drawing a " + shape + " and it's area is " + area;
         drawable4.draw("Square",200);
 
+        //Multiple lines
         Drawable3 drawable33 = (shape, name) -> {
             System.out.println("What kind of shape is this? :" + shape);
             System.out.println("Who is drawing this shape? :" + name);

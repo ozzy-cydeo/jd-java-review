@@ -4,6 +4,7 @@ import com.cybertek.enums.Status;
 import com.cybertek.oop.encapsulation.User;
 import com.cybertek.oop.inheritance.Project;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,6 +47,39 @@ public class StreamDemo {
 
 
     //5 task
+    /*
+    public static List<Project> updateProjectStatus(Status old,Status current) {
+        List<Project> updatedStatus = DataGenerator.getProjects().stream()
+                .filter(x -> x.getProjectStatus().equals(old))
+                .map(x -> {
+                    x.setProjectStatus(current);
+                    return x;
+                }).collect(Collectors.toList());
+        return updatedStatus;
+    }
+    */
+
+    public static List<Project> updateProjectStatus(Status old,Status current) {
+        List<Project> updatedStatus = DataGenerator.getProjects().stream()
+                .filter(x -> x.getProjectStatus().equals(old))
+                .peek(x -> x.setProjectStatus(current))
+                .collect(Collectors.toList());
+        return updatedStatus;
+    }
+
+    public static List<Project> findProjectByManager(User manager1){
+        return DataGenerator.getProjects().stream()
+               .filter(x -> x.getAssignedManager().equals(manager1))
+               .collect(Collectors.toList());
+    }
+
+    public static List<Project> findprojectAccordingToDateAndStatus(Status status){
+        return DataGenerator.getProjects().stream()
+                .filter(x->x.getProjectStatus().equals(status)
+                        && x.getStartDate().isBefore(LocalDate.now().minusDays(4)))
+                .collect(Collectors.toList());
+    }
+
 
 
 

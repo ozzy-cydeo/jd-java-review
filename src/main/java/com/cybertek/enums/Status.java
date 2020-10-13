@@ -1,8 +1,9 @@
 package com.cybertek.enums;
 
 import lombok.Getter;
+import lombok.Setter;
 
-
+@Getter
 public enum Status {
 
     OPEN("Open"),IN_PROGRESS("In Progress"),UAT_TEST("UAT Testing"),COMPLETED("Completed");
@@ -13,7 +14,4 @@ public enum Status {
         this.value = value;
     }
 
-    public String getValue() {
-        return value;
-    }
 }
