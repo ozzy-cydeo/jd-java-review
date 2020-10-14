@@ -25,6 +25,7 @@ public class EmployeeTest {
         employeeList.add(e4);
         employeeList.add(e5);
 
+
         employeeList.sort((emp1,emp2) -> emp1.employeeId.compareTo(emp2.employeeId));
         System.out.println(employeeList);
 

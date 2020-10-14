@@ -2,10 +2,7 @@ package com.cybertek.oop.inheritance;
 
 import com.cybertek.enums.Status;
 import com.cybertek.oop.encapsulation.User;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,6 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 public class Project extends BaseEntity {
 
     private String projectCode;

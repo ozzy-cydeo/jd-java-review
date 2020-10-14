@@ -38,23 +38,23 @@ public class TerminalOperations {
         Arrays.asList(3,4,6,12,20).stream().forEach(n -> System.out.println(n*2));
 
         System.out.println("*****************REDUCE*****************");
-        int result = Arrays.asList(3,4,6,12,20).stream().reduce(5,(x,y) -> x+y);
+       int result = Arrays.asList(3,4,6,12,20).stream().reduce(5,(x,y) -> x+y);
         System.out.println(result);
 
-        String strResult = Stream.of("java", "c", "c#", "python").reduce("Languages:", (x, y)->x+" | "+y);
-        System.out.println(strResult);
+        List<String> characters = Arrays.asList("C", "Y", "B", "E", "R", "T", "E", "K");
+        String word = characters.stream().reduce("",(a,b) -> a + b);
 
         System.out.println("*****************FIND FIRST - FIND ANY*****************");
-        Role r = ArrayLists.createRoleList().stream().filter(role -> role.getDescription().matches("Employee")).findFirst().get();
+        Role r = ArrayLists.createRoleList().stream().filter(role -> role.getDescription().equals("Employee")).findFirst().get();
         System.out.println(r.getId());
 
-        Role r2 = ArrayLists.createRoleList().stream().filter(role -> role.getDescription().matches("Employee")).findAny().get();
+        Role r2 = ArrayLists.createRoleList().stream().filter(role -> role.getDescription().equals("Employee")).findAny().get();
         System.out.println(r2.getId());
 
         System.out.println("*****************COLLECT*****************");
         List<String> appleList = Arrays.asList("Apple","Orange","Kiwi","Banana","Apple","Cherry","Mango")
                 .stream()
-                .filter(s -> s.matches("Apple"))
+                .filter(s -> s.equals("Apple"))
                 .collect(Collectors.toList());
 
         System.out.println(appleList.stream().count());

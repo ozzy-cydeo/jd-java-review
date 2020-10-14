@@ -1,10 +1,12 @@
 package com.cybertek.streams.exercises;
 
+import com.cybertek.enums.Gender;
 import com.cybertek.enums.Status;
 import com.cybertek.oop.encapsulation.User;
 import com.cybertek.oop.inheritance.Project;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,7 +14,6 @@ public class StreamDemo {
 
 
     public static List<Project> getListOfProject() {
-
         return DataGenerator.getProjects();
     }
 
@@ -28,7 +29,7 @@ public class StreamDemo {
         return DataGenerator.getProjects().stream().filter(x -> x.getProjectCode().equals(projectcode)).findFirst().get();
     }
 
-    public static List<User> listOfUsers() {
+    public static List<User> getListOfUsers() {
         return DataGenerator.getUsers();
     }
 
@@ -42,12 +43,12 @@ public class StreamDemo {
     }
 
     public static List<User> deleteUser(String firstName) {
-        return listOfUsers().stream().filter(x -> x.getFirstName().equals(firstName) == false).collect(Collectors.toList());
+        return getListOfUsers().stream().filter(x -> x.getFirstName().equals(firstName) == false).collect(Collectors.toList());
     }
 
 
     //5 task
-    /*
+
     public static List<Project> updateProjectStatus(Status old,Status current) {
         List<Project> updatedStatus = DataGenerator.getProjects().stream()
                 .filter(x -> x.getProjectStatus().equals(old))
@@ -57,8 +58,8 @@ public class StreamDemo {
                 }).collect(Collectors.toList());
         return updatedStatus;
     }
-    */
 
+/*
     public static List<Project> updateProjectStatus(Status old,Status current) {
         List<Project> updatedStatus = DataGenerator.getProjects().stream()
                 .filter(x -> x.getProjectStatus().equals(old))
@@ -67,18 +68,48 @@ public class StreamDemo {
         return updatedStatus;
     }
 
-    public static List<Project> findProjectByManager(User manager1){
+ */
+
+    public static List<Project> findProjectByManager(User manager){
         return DataGenerator.getProjects().stream()
-               .filter(x -> x.getAssignedManager().equals(manager1))
+               .filter(x -> x.getAssignedManager().equals(manager))
                .collect(Collectors.toList());
     }
 
-    public static List<Project> findprojectAccordingToDateAndStatus(Status status){
+    //Find projects that are created 4 days before or earlier and status is "IN_PROGRESS"
+    public static List<Project> findprojectAccordingToDateAndStatus(){
         return DataGenerator.getProjects().stream()
-                .filter(x->x.getProjectStatus().equals(status)
+                .filter(x->x.getProjectStatus().equals(Status.IN_PROGRESS)
                         && x.getStartDate().isBefore(LocalDate.now().minusDays(4)))
                 .collect(Collectors.toList());
     }
+
+    /*
+    public static Integer totalProjectDurationForManager() {
+        return DataGenerator.getProjects().stream()
+                .filter(x -> x.getAssignedManager() == DataGenerator.manager1)
+                .map(x -> Period.between(x.getStartDate(), x.getEndDate()).getDays())
+                .reduce(0,Integer::sum);
+    }
+
+     */
+
+    public static Integer totalProjectDurationForManager(User manager) {
+        return DataGenerator.getProjects().stream()
+                .filter(x -> x.getAssignedManager() == manager)
+                .map(x -> Period.between(x.getStartDate(), x.getEndDate()).getDays())
+                .reduce(0,(a,b) -> a+b);
+    }
+
+    //How many total male emplyee
+    public static  long findTotalMaleInCompany(){
+        return DataGenerator.getUsers().stream().filter(x->x.getGender().equals((Gender.MALE))).count();
+    }
+
+
+
+
+
 
 
 
